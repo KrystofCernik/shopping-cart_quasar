@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "title": "The Batmobile",
+            "imageUrl": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3456&q=80",
+            "vat": "85.75",
+            "price": "99.99",
+            "description": "This wonderful piece of Lego is merging the border between the DC universe dark knight - Batman and the rather square world of Lego bricks. Get the toy you want, not the one you deserve."
+        },
+        {
+            "id": 2,
+            "title": "The X-wing",
+            "imageUrl": "https://images.unsplash.com/photo-1610483178766-8092d96033f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHw%3D&w=1000&q=80",
+            "vat": "35.75",
+            "price": "49.99",
+            "description": "Look for the X built from the brixx and feel the rush while protecting the Alliance together with the the beepy fellow droids helping you to dodge those pesky imperial phasers."
+        },
+        {
+            "id": 3,
+            "title": "The Alpine Guy",
+            "imageUrl": "https://images.unsplash.com/photo-1616870145863-2f0d7d676f76?ixlib=rb-1.2.1&q=60&fm=jpg&crop=faces%2Cedges&cs=tinysrgb&w=1200&fit=crop&auto=format&h=630&mark-w=64&mark-align=top%2Cleft&mark-pad=50&blend-mode=normal&blend-alpha=10&blend-w=1&mark=https%3A%2F%2Fimages.unsplash.com%2Fopengraph%2Flogo.png&blend=000000",
+            "vat": "5.75",
+            "price": "9.99",
+            "description": "Have you ever experienced the finely ribbed... slopes of the Alps in the morning? Well you can now pretend as if, because of this wonderful fella who is ready to rock the 'Piste'."
+        }
+    ]
+}

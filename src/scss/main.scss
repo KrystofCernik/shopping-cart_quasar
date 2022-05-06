@@ -1,0 +1,483 @@
+$laptop: 1600px;
+
+@mixin laptop {
+    @media (max-width: #{$laptop}) {
+      @content;
+    }
+  }
+
+$tablet: 1100px;
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+$mobile: 420px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+$small_mobile: 380px;
+
+@mixin small_mobile {
+  @media (max-width: #{$small_mobile}) {
+    @content;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #F9F9F9;
+    font-family: 'Poppins';
+}
+
+.container {
+    padding: 0 6%;
+}
+
+.spacer {
+    height: 10vh;
+}
+
+h1 {
+    font-size: 7rem;
+    font-weight: 600;
+
+    @include mobile {
+        font-size: 3rem
+    }
+}
+
+h2 {
+    font-size: 3.5rem;
+    font-weight: 500;
+
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 500;
+
+    @include mobile {
+        font-size: 1.2rem;
+    }
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: 400;
+    padding-bottom: 1.5rem;
+}
+
+#nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 8vh;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+
+    .cart_holder {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        svg {
+            transform: scale(1.5);
+        }
+        
+        .quantity {
+            position: absolute;
+            right: -40%;
+            top: -40%;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #FFDE00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
+
+#hero {
+    width: 100%;
+    height: 100vh;
+
+    @include mobile {
+        height: 100vh;
+    }
+
+    .container {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        .hero_img {
+            height: 50%;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background-image: url(legofig.jpg);
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+
+            @include mobile {
+                height: 35%;
+            }
+
+            h1 {
+                color: #fff;
+                padding-bottom: 1rem;
+                z-index: 1;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 80%;
+                background: linear-gradient(178.45deg, rgba(51, 51, 51, 0) 53.43%, #0080C3 99.41%);
+
+                @include mobile {
+                    height: 40%;
+                }
+            }
+        }
+
+        .hero_content {
+            padding: 0 6%;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-evenly;
+
+            @include mobile {
+                height: 65%;
+                justify-content: space-between;
+            }
+
+            .heading2 {
+                padding: 1rem 0;
+            }
+
+            .p_holder {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 100px;
+
+                @include mobile {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    grid-gap: 0;
+                }
+
+                .column_left {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    
+                    .p2 {
+                        padding-top: 2rem;
+
+                        @include mobile {
+                            padding: 1rem 0;
+                        }
+                    }
+                }
+
+                .column_right {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+
+                    ul {
+                        padding-top: 2rem;
+                        margin-left: 3rem;
+
+                        @include mobile {
+                            padding-top: 1rem;
+                            margin-left: 1rem;
+                        }
+
+                        li {
+                            margin-bottom: 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#section1 {
+    width: 100%;
+    height: 20vh;
+
+    @include mobile {
+        height: 40vh;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+
+        @include mobile {
+            align-items: center;
+        }
+
+        .p4 {
+            margin-top: 1rem;
+        }
+    }
+}
+
+#collection {
+    width: 100%;
+    height: 94vh;
+
+    @include tablet {
+        height: auto;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .collection_heading {
+            width: 50%;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+
+        .collection_search {
+            width: 50%;
+            text-align: center;
+            margin: 2rem 0;
+
+            @include mobile {
+                width: 100%;
+            }
+
+            input {
+                background-color: #fff;
+                border: 1px solid #999;
+                border-radius: 5px;
+                padding: 0.5rem;
+                width: 50%;
+                font-family: 'Poppins', FontAwesome;
+
+                @include mobile {
+                    width: 80%;
+                }
+
+                &:focus {
+                    outline: none;
+                    border-color:#EF4444;
+                }
+            }
+        }
+
+        .collection_items {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            @include tablet {
+                flex-direction: column;
+            }
+
+            .item {
+                width: 360px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 1rem 0.5rem;
+                border: none;
+                border-radius: 7px;
+                background-color: #fff;
+                box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+                .item_name {
+                    padding: 1rem;
+                    font-size: 1.3rem;
+                    font-weight: 500;
+                    margin: 0 auto;
+                }
+
+                .item_img {
+                    width: 100%;
+                    height: 320px;
+                    object-fit: cover;
+                }
+
+                .desc {
+                    font-size: 0.8rem;
+                    padding: 1rem;
+
+                    @include mobile {
+                        padding: 1.5rem;
+                    }
+                }
+
+                .item_info {
+                    width: 100%;
+                    height: 30%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 1rem;
+
+                    @include mobile {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+
+                    .item_info1 {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: space-between;
+
+                        @include mobile {
+                           padding-left: 0.5rem;
+                            margin-bottom: 2rem;
+                        }
+
+                        .item_info_price {
+                            font-size: 1.5rem;
+                            color: #EF4444;
+                            font-weight: 500;
+                        }
+                        .item_info_VAT {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            white-space: nowrap;
+                            font-size: 0.8rem;
+
+                            .VAT_text {
+                                color: #828282;
+                                margin-right: 0.5rem;
+                            }
+
+                            .VAT_price {
+                                font-weight: 500;
+                            }
+                        }
+                    }
+
+                    .item_info2 {
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: flex-end;
+
+                        @include mobile {
+                            align-self: center;
+                        }
+
+                        .btn_buy {
+                            padding: 0.7rem 1.5rem;
+                            border: none;
+                            border-radius: 7px;
+                            background-color: #333;
+                            font-family: 'Poppins';
+                            font-size: 1rem;
+                            color: #fff;
+                            white-space: nowrap;
+                            transition: 0.2s ease;
+                            cursor: pointer;
+                            margin-left: 0.5rem;
+
+                            @include mobile {
+                                width: 100%;
+                                margin-left: 0;
+                                padding: 0.7rem 7.5rem;
+                            }
+
+                            &:hover {
+                                background-color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .item2 {
+                .btn_buy {
+                    background-color: #EF4444 !important;
+
+                    &:hover {
+                        background-color: darken($color: #EF4444, $amount: 20%) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#footer {
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @include mobile {
+        font-size: 0.8rem;
+    }
+}
