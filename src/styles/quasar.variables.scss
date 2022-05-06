@@ -1,0 +1,28 @@
+// It's highly recommended to change the default colors
+// to match your app's branding.
+
+$primary   : #027BE3;
+$secondary : #26A69A;
+$accent    : #9C27B0;
+
+$dark      : #1D1D1D;
+
+$positive  : #21BA45;
+$negative  : #C10015;
+$info      : #31CCEC;
+$warning   : #F2C037;
+
+@import '~quasar-variables-styl';
+
+$breakpoint-xs-max: (map-get($sizes, "sm") - 0.02) !default;
+
+$breakpoint-sm-min: map-get($sizes, "sm") !default;
+$breakpoint-sm-max: (map-get($sizes, "md") - 0.02) !default;
+
+$breakpoint-md-min: map-get($sizes, "md") !default;
+$breakpoint-md-max: (map-get($sizes, "lg") - 0.02) !default;
+
+$breakpoint-lg-min: map-get($sizes, "lg") !default;
+$breakpoint-lg-max: (map-get($sizes, "xl") - 0.02) !default;
+
+$breakpoint-xl-min: map-get($sizes, "xl") !default;

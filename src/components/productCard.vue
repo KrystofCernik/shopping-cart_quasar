@@ -1,18 +1,22 @@
 <template>
     <div class="item">
-        <p class="item_name">{{ item.name }}</p>
-            <img class="item_img" :src="item.img" alt="">
-        <p class="desc">{{ item.desc }}</p>
-        <div class="item_info">
-            <div class="item_info1">
-                <p class="item_info_price">${{ item.price }}</p>
-                <div class="item_info_VAT">
-                    <p class="VAT_text">Without VAT</p>
-                    <p class="VAT_price">${{ item.vat }}</p>
+        <div class="item-title">
+            <p class="p">{{ title }}</p>
+        </div>
+        <img class="item-img" :src="imageUrl" alt="">
+        <div class="item-desc">
+            <p class="p">{{ description }}</p>
+        </div>
+        <div class="item-info">
+            <div class="item-price">
+                <p class="p item-price-final">{{ "$" + price }}</p>
+                <div class="item-price-VAT">
+                    <p class="p VAT-text">Without VAT</p>
+                    <p class="p VAT-price">{{ "$" + (price - price * 0.21).toFixed(2) }}</p>
                 </div>
             </div>
-            <div class="item_info2">
-                <button class="btn_buy">Buy it now</button>   
+            <div class="item-btn">
+                <button class="btn btn-buy" :class="{red: this.id === 2}" @click='addToCart(product)'>Buy it now</button>
             </div>
         </div>
     </div>
@@ -20,127 +24,138 @@
 
 <script>
     export default {
-        props: ['item'],
+        props: ['product','id', 'title', 'imageUrl', 'price', 'description'],
+        methods: {
+            addToCart(product) {
+                this.$store.dispatch('addToCart', product)
+                console.log(this.$store.getters.itemQuantity(this.product), product)
+                console.log(this.$store.getters.cart)
+            }
+        }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../scss/_mixins.scss';
 
 .item {
-                width: 360px;
-                height: auto;
+    width: 360px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem;
+    background-color: #fff;
+    box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: none;
+    border-radius: 7px;
+    transition: 0.3s ease;
+
+    &:hover {
+        box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.2), 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .item-title {
+        width: 100%;
+        height: 20%;
+        padding: 0 1rem;
+        text-align: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 0;
+        }
+    }
+
+    .item-img {
+        width: 100%;
+        height: 45%;
+        object-fit: cover;
+    }
+
+    .item-desc {
+        padding: 1rem;
+        width: 100%;
+        height: 15%;
+        text-align: justify;
+
+        p {
+            font-size: 0.8rem;
+        }
+    }
+
+    .item-info {
+        width: 100%;
+        height: 20%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 1rem 2rem 1rem;
+        align-items: flex-end;
+
+        .item-price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            .item-price-final {
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: #EF4444;
+                margin-bottom: 0.5rem;
+            }
+
+            .item-price-VAT {
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                margin: 1rem 0.5rem;
-                border: none;
-                border-radius: 7px;
-                background-color: #fff;
-                box-shadow: 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+                gap: 0.5rem;
+                white-space: nowrap;
 
-                .item_name {
-                    padding: 1rem;
-                    font-size: 1.3rem;
+                .VAT-text {
+                    color: #828282;
+                    font-size: 0.9rem;
+                }
+
+                .VAT-price {
+                    font-size: 0.9rem;
                     font-weight: 500;
-                    margin: 0 auto;
-                }
-
-                .item_img {
-                    width: 100%;
-                    height: 320px;
-                    object-fit: cover;
-                }
-
-                .desc {
-                    font-size: 0.8rem;
-                    padding: 1rem;
-
-                    @include mobile {
-                        padding: 1.5rem;
-                    }
-                }
-
-                .item_info {
-                    width: 100%;
-                    height: 30%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 1rem;
-
-                    @include mobile {
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-
-                    .item_info1 {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        justify-content: space-between;
-
-                        @include mobile {
-                           padding-left: 0.5rem;
-                            margin-bottom: 2rem;
-                        }
-
-                        .item_info_price {
-                            font-size: 1.5rem;
-                            color: #EF4444;
-                            font-weight: 500;
-                        }
-                        .item_info_VAT {
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            white-space: nowrap;
-                            font-size: 0.8rem;
-
-                            .VAT_text {
-                                color: #828282;
-                                margin-right: 0.5rem;
-                            }
-
-                            .VAT_price {
-                                font-weight: 500;
-                            }
-                        }
-                    }
-
-                    .item_info2 {
-                        display: flex;
-                        align-items: flex-end;
-                        justify-content: flex-end;
-
-                        @include mobile {
-                            align-self: center;
-                        }
-
-                        .btn_buy {
-                            padding: 0.7rem 1.5rem;
-                            border: none;
-                            border-radius: 7px;
-                            background-color: #333;
-                            font-family: 'Poppins';
-                            font-size: 1rem;
-                            color: #fff;
-                            white-space: nowrap;
-                            transition: 0.2s ease;
-                            cursor: pointer;
-                            margin-left: 0.5rem;
-
-                            @include mobile {
-                                width: 100%;
-                                margin-left: 0;
-                                padding: 0.7rem 7.5rem;
-                            }
-
-                            &:hover {
-                                background-color: #000;
-                            }
-                        }
-                    }
                 }
             }
+        }
+
+        .item-btn {
+
+            .btn-buy {
+                float: right;
+                padding: 0.7rem 1.5rem;
+                border: none;
+                border-radius: 7px;
+                background-color: #333;
+                font-family: 'Poppins';
+                font-size: 1rem;
+                font-weight: 600;
+                color: #fff;
+                white-space: nowrap;
+                cursor: pointer;
+                transition: 0.2s ease;
+
+                &:hover {
+                    background-color: #000;
+                }
+
+                &.red {
+                    background-color: #EF4444;
+                }
+
+                &:hover.red {
+                    background-color: darken($color: #EF4444, $amount: 15);
+                }
+            }
+        }
+    }
+}
+
 </style>
